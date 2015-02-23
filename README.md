@@ -19,5 +19,4 @@ Platform.textMessage('+12223334444');
 Platform.sendEmail('support@dispatch.me', 'Loving your packages');
 
 Platform.openMap('170 Milk Street, Boston MA');
-});
 ```
