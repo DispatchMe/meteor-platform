@@ -9,7 +9,7 @@ if (Platform.isAndroid) {
 }
 
 if (Platform.isIos) {
-  // ios specific logic
+  // iOS specific logic
 }
 
 Platform.phoneCall('+12223334444');
