@@ -6,11 +6,15 @@ Package.describe({
 });
 
 Cordova.depends({
-  'de.appplant.cordova.plugin.email-composer': 'https://github.com' +
-  '/katzer/cordova-plugin-email-composer' +
-  '/tarball/45b4101dc1fc05b7bcf1af6caee5e51de3855ad7',
+  'com.cordova.plugins.sms': 'https://github.com' +
+  '/DispatchMe/cordova-sms-plugin' +
+  '/tarball/f19357dd17135af686dbf9fb782ee7fe01b86a2d',
 
-  // This prevents the annoying Undo Edit popup
+  'de.appplant.cordova.plugin.email-composer': 'https://github.com' +
+  '/DispatchMe/cordova-plugin-email-composer' +
+  '/tarball/e0466a2bedf6798228ce5e46db21481e665641e1',
+
+  // This prevents the annoying Undo Edit popup on iOS.
   'fr.spirotron.cordova.ios.disableshaketoedit': 'https://github.com' +
   '/nleclerc/cordova-plugin-ios-disableshaketoedit' +
   '/tarball/685f971fd0328fd167ea443f5638cd85e3fc035f'

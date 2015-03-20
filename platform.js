@@ -22,7 +22,7 @@ Platform.openMap = function (address) {
     window.open(url, '_system');
   } else if (Platform.isAndroid) {
     url = 'geo://0,0?q=' + address;
-    navigator.app.loadUrl(url, {openExternal : true});
+    navigator.app.loadUrl(url, {openExternal: true});
   } else {
     url = 'http://maps.google.com/?dirflg=d&q=' + address;
     window.open(url, '_system');
@@ -36,7 +36,7 @@ Platform.openMap = function (address) {
 Platform.phoneCall = function (number) {
   var url = 'tel:' + number;
   if (Platform.isAndroid) {
-    navigator.app.loadUrl(url, {openExternal : true});
+    navigator.app.loadUrl(url, {openExternal: true});
   } else {
     window.open(url, '_system');
   }
@@ -70,9 +70,11 @@ Platform.sendEmail = function (address, subject) {
  * @param number
  */
 Platform.textMessage = function (number) {
+  if (Meteor.isCordova && Platform.isIos) return sms.send(number, '', {});
+
   var url = 'sms:' + number;
   if (Platform.isAndroid) {
-    navigator.app.loadUrl(url, {openExternal : true});
+    navigator.app.loadUrl(url, {openExternal: true});
   } else {
     window.open(url, '_system');
   }
