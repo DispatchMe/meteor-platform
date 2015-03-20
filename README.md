@@ -3,6 +3,14 @@ platform
 
 Platform detection and normalization.
 
+### Getting Started
+
+````
+App.accessRule('maps://*', {
+  launchExternal: true
+});
+````
+
 ```js
 if (Platform.isAndroid) {
   // Android specific logic
