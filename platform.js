@@ -9,6 +9,31 @@ Platform.isIos = /(ipad|iphone|ipod)/g.test(navigator.userAgent.toLowerCase());
 Platform.isMobile = Platform.isAndroid || Platform.isIos;
 
 /**
+ * Get the version of the user's mobile device.
+ * @return version This is false if the device is not mobile.
+ */
+Platform.mobileVersion = function () {
+  var userAgent = navigator.userAgent;
+
+  // Determine version based on device
+  if (userAgent.indexOf('iPhone') > -1) {
+    return userAgent.substr(userAgent.indexOf('iPhone OS') + 10, 3).replace( '_', '.' );
+  }
+
+  if (userAgent.indexOf('iPad') > -1) {
+    return userAgent.substr(userAgent.indexOf('CPU OS') + 7, 3).replace( '_', '.' );
+  }
+
+  if (userAgent.indexOf('Android') > -1) {
+    return userAgent.substr(userAgent.indexOf('Android') + 8, 3);
+  }
+
+  // Return false if the device is not a mobile device
+  return false;
+};
+
+
+/**
  * Create a map url that is appropriate for the current device.
  * @param address Ex. 1143 Lexington Ave, Indianapolis IN, 46203
  */
