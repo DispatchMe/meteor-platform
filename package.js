@@ -1,7 +1,7 @@
 Package.describe({
   name: 'dispatch:platform',
   summary: 'Platform detection and normalization.',
-  version: '1.0.1',
+  version: '1.0.2',
   git: 'https://github.com/DispatchMe/meteor-platform.git'
 });
 
