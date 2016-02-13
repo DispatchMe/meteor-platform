@@ -6,7 +6,7 @@ Package.describe({
 });
 
 Cordova.depends({
-  'com.cordova.plugins.sms': 'hhttps://github.com/cordova-sms/cordova-sms-plugin.git#17c4da078f6c0d9f762ac10f5015440ee1c81d07',
+  'com.cordova.plugins.sms': 'https://github.com/cordova-sms/cordova-sms-plugin.git#17c4da078f6c0d9f762ac10f5015440ee1c81d07',
 
   'de.appplant.cordova.plugin.email-composer': 'https://github.com/katzer/cordova-plugin-email-composer.git#db9c3aa9a7923c427bb85fea82f4e95f445a28f3',
 
@@ -17,7 +17,14 @@ Cordova.depends({
 Package.onUse(function (api) {
   api.versionsFrom('1.2');
 
-  api.use('jquery', 'web');
+  api.use([
+    // core
+    'jquery',
+    'reactive-var',
+
+    // atmosphere
+    'gadicohen:reactive-window',
+  ], 'web');
 
   api.addFiles(['platform.js', 'normalize.js'], 'web');
 

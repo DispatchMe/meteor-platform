@@ -7,6 +7,7 @@ Platform.isAndroid = /android/g.test(navigator.userAgent.toLowerCase());
 Platform.isIos = /(ipad|iphone|ipod)/g.test(navigator.userAgent.toLowerCase());
 
 Platform.isMobile = Platform.isAndroid || Platform.isIos;
+Platform.isNotMobile = !Platform.isAndroid && !Platform.isIos;
 
 /**
  * Get the version of the user's mobile device.
@@ -50,7 +51,8 @@ Platform.openMap = function (address) {
     navigator.app.loadUrl(url, {openExternal: true});
   } else {
     url = 'http://maps.google.com/?dirflg=d&q=' + address;
-    window.open(url, '_system');
+    if (rwindow.$width() < 768) window.open(url, '_system');
+    else window.open(url, '_blank');
   }
 };
 
