@@ -51,6 +51,7 @@ Platform.openMap = function (address) {
     navigator.app.loadUrl(url, {openExternal: true});
   } else {
     url = 'http://maps.google.com/?dirflg=d&q=' + address;
+    console.log(rwindow.$width() < 768)
     if (rwindow.$width() < 768) window.open(url, '_system');
     else window.open(url, '_blank');
   }
