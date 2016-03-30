@@ -13,7 +13,7 @@ Platform.isMobile = Platform.isAndroid || Platform.isIos;
  * @return version This is false if the device is not mobile.
  */
 Platform.mobileVersion = function () {
-  var userAgent = navigator.userAgent;
+  const userAgent = navigator.userAgent;
 
   // Determine version based on device
   if (userAgent.indexOf('iPhone') > -1) {
@@ -40,16 +40,16 @@ Platform.mobileVersion = function () {
 Platform.openMap = function (address) {
   address = encodeURI(address);
 
-  var url;
+  let url = '';
 
   if (Platform.isIos) {
-    url = 'maps://maps.apple.com/?q=' + address;
+    url = `maps://maps.apple.com/?q=${address}`;
     window.open(url, '_system');
   } else if (Platform.isAndroid) {
-    url = 'geo://0,0?q=' + address;
-    navigator.app.loadUrl(url, {openExternal: true});
+    url = `geo://0,0?q=${address}`;
+    navigator.app.loadUrl(url, { openExternal: true });
   } else {
-    url = 'http://maps.google.com/?dirflg=d&q=' + address;
+    url = `http://maps.google.com/?dirflg=d&q=${address}`;
     window.open(url, '_system');
   }
 };
@@ -59,9 +59,10 @@ Platform.openMap = function (address) {
  * @param number
  */
 Platform.phoneCall = function (number) {
-  var url = 'tel:' + number;
+  const url = 'tel:' + number;
+
   if (Platform.isAndroid) {
-    navigator.app.loadUrl(url, {openExternal: true});
+    navigator.app.loadUrl(url, { openExternal: true });
   } else {
     window.open(url, '_system');
   }
@@ -74,20 +75,20 @@ Platform.phoneCall = function (number) {
  */
 Platform.sendEmail = function (address, subject) {
   if (Meteor.isCordova) {
-    cordova.plugins.email.isAvailable(function (isAvailable) {
+    cordova.plugins.email.isAvailable(isAvailable => {
       if (isAvailable) {
         cordova.plugins.email.open({
           to: [address],
           subject: subject
         });
       } else {
-        window.location.href = 'mailto:' + address + '?subject=' + subject;
+        window.location.href = `mailto:${address}?subject=${subject}`;
       }
     });
     return;
+  } else {
+    window.location.href = `mailto:${address}?subject=${subject}`;
   }
-
-  window.location.href = 'mailto:' + address + '?subject=' + subject;
 };
 
 /**
@@ -97,7 +98,8 @@ Platform.sendEmail = function (address, subject) {
 Platform.textMessage = function (number) {
   if (Meteor.isCordova && Platform.isIos) return sms.send(number, '', {});
 
-  var url = 'sms:' + number;
+  const url = 'sms:' + number;
+
   if (Platform.isAndroid) {
     navigator.app.loadUrl(url, {openExternal: true});
   } else {
